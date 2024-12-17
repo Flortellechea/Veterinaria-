@@ -1,0 +1,1 @@
+{"veterinarias":[{"id":1,"nombre":"Veterinaria Del Arroyo","direccion":"Brown 1522","clientesVeterinaria":[],"pacientesVeterinaria":[]},{"id":2,"nombre":"San Jorge","direccion":"Pueyrredon 2203","clientesVeterinaria":[2],"pacientesVeterinaria":[]}],"clientes":[{"id":2,"dni":"44556897","nombre":"Claudio Forza","telefono":"2284785632"}],"pacientes":[],"proveedores":[]}

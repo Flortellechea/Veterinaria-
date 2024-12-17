@@ -1,0 +1,18 @@
+{
+  "name": "veterinarias",
+  "version": "1.0.0",
+  "description": "sistemaRedDeVeterinarias",
+  "main": "app.js",
+  "scripts": {
+    "veterinaria": "npx tsc && node dist/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1"
+  }
+}
+
