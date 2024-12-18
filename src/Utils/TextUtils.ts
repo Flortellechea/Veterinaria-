@@ -17,7 +17,7 @@ export class TextUtils {
 
     static bannerVeterinaria(vet: Veterinaria) {
         TextUtils.consoleLinea();
-        console.warn(`  VETERINARIA ${vet.getnombre().toUpperCase()}`)
+        console.warn(`  VETERINARIA ${vet.getNombre().toUpperCase()}`)
         TextUtils.consoleLinea();
     }
 

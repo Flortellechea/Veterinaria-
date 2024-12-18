@@ -3,8 +3,6 @@ import { TextUtils } from "../../../Utils/TextUtils";
 import { Veterinaria } from "../../../veterinaria/Veterinaria";
 import { RedVeterinarias } from "../../../veterinaria/Veterinarias";
 import { RutinaEjecutable } from "../RutinaEjecutable";
-import { IdUtils } from '../../../Utils/IdUtils';
-import { Cliente } from '../../../veterinaria/Cliente';
 
 export class ModificarClienteRutina implements RutinaEjecutable {
 
@@ -25,8 +23,9 @@ export class ModificarClienteRutina implements RutinaEjecutable {
         if (existente) {
             const nombre = TextUtils.pedirTextoOpcionalVelorXDefecto("Nombre de Cliente", existente.getNombre());
             const telefono = TextUtils.pedirTextoOpcionalVelorXDefecto("Telefono de Cliente", existente.getTelefono());
+            const esVip = readlineSync.question("¿Es VIP? (S/N): ").toLowerCase() === 's';
             TextUtils.consoleLinea();
-            console.log(`Sus datos ingresados son: nombre: ${nombre}, telefono: ${telefono}`);
+            console.log(`Sus datos ingresados son: nombre: ${nombre}, telefono: ${telefono}, es Vip: ${esVip}`);
             const opcion = readlineSync.question("Presione S si es correcto, N si quiere reintentar, C cancelar: ");
             if (opcion.toLowerCase() == 's') {
                 existente.setNombre(nombre);

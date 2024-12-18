@@ -1,5 +1,3 @@
-
-import * as readlineSync from 'readline-sync';
 import * as  fs from 'fs';
 import { TextUtils } from "../Utils/TextUtils";
 import { Paciente } from "./Paciente";
@@ -9,6 +7,7 @@ import { Veterinaria } from './Veterinaria';
 
 
 export class RedVeterinarias {
+    
     private verterinarias: Veterinaria[];
     private clientes: Cliente[];
     private pacientes: Paciente[];
@@ -67,7 +66,7 @@ export class RedVeterinarias {
             }
             for (let index = 0; index < datosVeterinaria.clientes.length; index++) {
                 const cli = datosVeterinaria.clientes[index];
-                this.clientes.push(new Cliente(cli.id, cli.dni, cli.nombre, cli.telefono));
+                this.clientes.push(new Cliente(cli.id, cli.dni, cli.nombre, cli.telefono, cli.esVip));
             }
             for (let index = 0; index < datosVeterinaria.pacientes.length; index++) {
                 const pac = datosVeterinaria.pacientes[index];
@@ -81,11 +80,14 @@ export class RedVeterinarias {
         } catch (error) {
             console.log(error);
         }
-        // console.log(this.verterinarias,this.clientes,this.pacientes,this.proveedores);
     }
     
     public getVeterinarias(): Veterinaria[] {
         return this.verterinarias;
+    }
+
+    public setVeterinarias(verterinarias: Veterinaria[]) {
+        this.verterinarias = verterinarias;
     }
 
     public getClientes(): Cliente[] {

@@ -49,7 +49,7 @@ export class MenuPricipal {
                 if (veterinariaSeleccionada) {
                     console.clear();
                     TextUtils.consoleLinea();
-                    console.log(`Veterinaria ${veterinariaSeleccionada.getnombre()} seleccionada exitosamente`);
+                    console.log(`Veterinaria ${veterinariaSeleccionada.getNombre()} seleccionada exitosamente`);
                     TextUtils.consoleLinea();
                     TextUtils.esperarTecla();
                     let sigueMenuVet = true;

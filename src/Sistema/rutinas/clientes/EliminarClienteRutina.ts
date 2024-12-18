@@ -18,7 +18,7 @@ export class EliminarClienteRutina implements RutinaEjecutable {
         console.clear();
         console.log("Eliminar Cliente:");
         TextUtils.consoleLinea();
-        const dni: number = TextUtils.pedirNumeroObligatorio("Ingrese DNI de Cliente a modificar: ");
+        const dni: number = TextUtils.pedirNumeroObligatorio("Ingrese DNI de Cliente a eliminar: ");
         const existente = this.red.getClientes().find((cli) => cli.dni == dni);
         if (existente) {
             console.log(`Esta seguro de eliminar: ${existente.getNombre()}`);

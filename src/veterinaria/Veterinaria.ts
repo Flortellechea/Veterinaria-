@@ -26,7 +26,7 @@ export class Veterinaria implements Identificable {
 
     }
 
-    public getnombre(): string {
+    public getNombre(): string {
         return this.nombre;
     }
     public setNombre(nombre: string) {

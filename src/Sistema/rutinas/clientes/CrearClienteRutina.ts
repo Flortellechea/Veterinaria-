@@ -43,17 +43,18 @@ export class CrearClienteRutina implements RutinaEjecutable {
             }
         }
         const nombre = TextUtils.pedirTextoObligatorio("Ingrese nombre de Cliente: ");
-        readlineSync.question("Ingrese nombre de Cliente: ");
         const telefono = TextUtils.pedirTextoObligatorio("Ingrese telefono de Cliente: ");
+        const esVip = readlineSync.question("¿Es VIP? (S/N): ").toLowerCase() === 's';
         TextUtils.consoleLinea();
-        console.log(`Sus datos ingresados son: dni: ${dni}, nombre: ${nombre}, telefono: ${telefono}`);
+        console.log(`Sus datos ingresados son: dni: ${dni}, nombre: ${nombre}, telefono: ${telefono}, es Vip: ${esVip}`);
         const opcion = readlineSync.question("Presione S si es correcto, N si quiere reintentar, C cancelar: ");
         if (opcion.toLowerCase() == 's') {
             const idCli = IdUtils.getProximoID(this.red.getClientes());
-            const nuevo = new Cliente(idCli, dni, nombre, telefono);
+            const nuevo = new Cliente(idCli, dni, nombre, telefono, esVip);
             this.red.getClientes().push(nuevo);
             this.vet.getClientesVeterinaria().push(nuevo.getId());
             this.red.guardar();
+
             return true;
         }
         if (opcion.toLowerCase() == 'n') {

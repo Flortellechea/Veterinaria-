@@ -1,3 +1,4 @@
+import * as readlineSync from 'readline-sync';
 import { TextUtils } from "../../../Utils/TextUtils";
 import { Veterinaria } from "../../../veterinaria/Veterinaria";
 import { RedVeterinarias } from "../../../veterinaria/Veterinarias";
@@ -8,7 +9,6 @@ export class ModificarPacienteRutina implements RutinaEjecutable {
 
     vet: Veterinaria;
     red: RedVeterinarias;
-    pac: Paciente;
 
     constructor(vet: Veterinaria, red: RedVeterinarias) {
         this.vet = vet;
@@ -17,19 +17,29 @@ export class ModificarPacienteRutina implements RutinaEjecutable {
 
     ejecutarRutina(): boolean {
         console.clear();
-        TextUtils.bannerVeterinaria(this.vet);
-        console.log("Lista de Pacientes:");
+        console.log("Modificar Paciente:");
         TextUtils.consoleLinea();
-        for (let index = 0; index < this.vet.getPacientesVeterinaria().length; index++) {
-            const IdPac:number = this.vet.getClientesVeterinaria()[index];
-            const paciente:Paciente = this.red.getPacientes().find((pac) => pac.getId() == IdPac);
-            if (paciente) {
-                console.log(`   ${paciente.getId()}  ${paciente.getNombre()} ${paciente.getEspecie()} ${paciente.getDuenio()} `);
-                TextUtils.consoleLinea();
+        const nombre: string = TextUtils.pedirTextoObligatorio("Ingrese el nombre del paciente a modificar: ");
+        const existente = this.red.getPacientes().find((pac) => pac.nombre == nombre);
+        if (existente) {
+            const nombre = TextUtils.pedirTextoOpcionalVelorXDefecto("Nombre de Paciente", existente.getNombre());
+            TextUtils.consoleLinea();
+            console.log(`Sus datos ingresados son: nombre: ${nombre}`);
+            const opcion = readlineSync.question("Presione S si es correcto, N si quiere reintentar, C cancelar: ");
+            if (opcion.toLowerCase() == 's') {
+                existente.setNombre(nombre);
+                this.red.guardar();
+                TextUtils.mensajeConEnter("Paciente modificado exitosamente");
+                return true;
             }
+            if (opcion.toLowerCase() == 'n') {
+                return this.ejecutarRutina();
+            }
+        } else {
+            TextUtils.mensajeConEnter(`No se encuentra paciente con el nombre ingresado`);
+            return false;
         }
-        TextUtils.consoleLinea();
-        TextUtils.esperarTecla();
-        return true;
+
+        return false;
     }
 }

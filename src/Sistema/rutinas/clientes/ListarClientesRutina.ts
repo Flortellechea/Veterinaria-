@@ -23,7 +23,7 @@ export class ListarClientesRutina implements RutinaEjecutable {
             const idCli:number = this.vet.getClientesVeterinaria()[index];
             const cliente:Cliente = this.red.getClientes().find((cli) => cli.getId() == idCli);
             if (cliente) {
-                console.log(`   ${cliente.getId()}  ${cliente.getDni()}  ${cliente.getNombre()} Tel: ${cliente.getTelefono()}`);
+                console.log(`   ${cliente.getId()}  ${cliente.getDni()}  ${cliente.getNombre()} Tel: ${cliente.getTelefono()}  esVip: ${cliente.getEsVip()}`);
                 TextUtils.consoleLinea();
             }
         }
