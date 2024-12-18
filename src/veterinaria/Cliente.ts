@@ -6,7 +6,7 @@ export class Cliente extends Persona {
 
     constructor(id: number, dni: number,  nombre: string, telefono: string, esVip: boolean) {
         super(id, dni, nombre, telefono,);
-        this.esVip = esVip;
+        this.esVip = esVip || false;
     }
     
     public getEsVip(): boolean {
@@ -14,7 +14,7 @@ export class Cliente extends Persona {
     }
     
     public setEsVip(esVip: boolean): void {
-        this.esVip = esVip;
+        this.esVip = esVip || false;
     }
 
 }

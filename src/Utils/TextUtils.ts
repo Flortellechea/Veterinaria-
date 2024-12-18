@@ -1,8 +1,6 @@
 import * as readlineSync from 'readline-sync';
 import { Veterinaria } from '../veterinaria/Veterinaria';
 export class TextUtils {
-
-
     static consoleLinea(): void {
         console.warn(`-----------------------------------------------------`);
     }

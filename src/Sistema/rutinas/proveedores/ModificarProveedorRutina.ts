@@ -21,7 +21,7 @@ export class ModificarProveedorRutina implements RutinaEjecutable {
         console.log("Modificar Proveedor:");
         TextUtils.consoleLinea();
         const id: number = TextUtils.pedirNumeroObligatorio("Ingrese ID deL Proveedor a modificar: ");
-        const existente = this.red.getClientes().find((prov) => prov.id == id);
+        const existente = this.red.getProveedores().find((prov) => prov.id == id);
         if (existente) {
             const nombre = TextUtils.pedirTextoOpcionalVelorXDefecto("Nombre del Proveedor", existente.getNombre());
             const telefono = TextUtils.pedirTextoOpcionalVelorXDefecto("Telefono del Proveedor", existente.getTelefono());

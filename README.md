@@ -12,7 +12,7 @@ git clone https://github.com/Flortellechea/Veterinaria-.git
 npm i
 ```
 
-3 - Ejecutar el casino con el siguiente comando:
+3 - Ejecutar el sistema con el siguiente comando:
 ```
 npm run 
 ```

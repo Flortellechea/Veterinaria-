@@ -1,3 +1,4 @@
+import * as readlineSync from 'readline-sync';
 import { TextUtils } from "../../../Utils/TextUtils";
 import { Veterinaria } from "../../../veterinaria/Veterinaria";
 import { RedVeterinarias } from "../../../veterinaria/Veterinarias";
@@ -15,21 +16,29 @@ export class EliminarPacienteRutina implements RutinaEjecutable {
         this.red = red;
     }
 
-    ejecutarRutina(): boolean {
-        console.clear();
-        TextUtils.bannerVeterinaria(this.vet);
-        console.log("Lista de Pacientes:");
-        TextUtils.consoleLinea();
-        for (let index = 0; index < this.vet.getPacientesVeterinaria().length; index++) {
-            const IdPac:number = this.vet.getClientesVeterinaria()[index];
-            const paciente:Paciente = this.red.getPacientes().find((pac) => pac.getId() == IdPac);
-            if (paciente) {
-                console.log(`   ${paciente.getId()}  ${paciente.getNombre()} ${paciente.getEspecie()} ${paciente.getDuenio()} `);
-                TextUtils.consoleLinea();
-            }
-        }
-        TextUtils.consoleLinea();
-        TextUtils.esperarTecla();
-        return true;
-    }
-}
+  ejecutarRutina(): boolean {
+          console.clear();
+          console.log("Eliminar Paciente:");
+          TextUtils.consoleLinea();
+          const nombre: string = TextUtils.pedirTextoObligatorio("Ingrese nombre del paciente a eliminar: ");
+          const existente = this.red.getPacientes().find((pac) => pac.nombre == nombre);
+          if (existente) {
+              console.log(`Esta seguro de eliminar: ${existente.getNombre()}`);
+              const opcion = readlineSync.question("Presione S si es correcto, N si quiere reintentar, C cancelar: ");
+              if (opcion.toLowerCase() == 's') {
+                  const nuevoArrFiltrado = this.vet.getPacientesVeterinaria().filter((pacId) => pacId != existente.getId());
+                  this.vet.setPacientesVeterinaria(nuevoArrFiltrado);
+                  this.red.guardar();
+                  TextUtils.mensajeConEnter("Paciente eliminado exitosamente");
+                  return true;
+              }
+              if (opcion.toLowerCase() == 'n') {
+                  return this.ejecutarRutina();
+              }
+          } else {
+              TextUtils.mensajeConEnter(`No se encuentra el paciente con el nombre ingresado`);
+              return false;
+          }
+          return false;
+      }
+  }
