@@ -28,4 +28,12 @@ export class Persona implements Identificable {
     getNombre(): string {
         return this.nombre;
     }
+
+    setTelefono(telefono:string) {
+        this.telefono = telefono;
+    }
+
+    setNombre(nombre:string) {
+        this.nombre = nombre;
+    }
 }

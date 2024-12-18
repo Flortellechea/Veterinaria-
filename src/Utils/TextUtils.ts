@@ -38,13 +38,22 @@ export class TextUtils {
     static pedirTextoObligatorio(texto: string): string {
         let textoValido = false;
         while (!textoValido) {
-            const textoLeido:string = readlineSync.question(texto);
+            const textoLeido: string = readlineSync.question(texto);
             if ((textoLeido.trim().length == 0)) {
                 console.log("Error debe ingresar texto valido");
                 readlineSync.question("Enter para continuar");
             } else {
                 return textoLeido;
             }
+        }
+    }
+
+    static pedirTextoOpcionalVelorXDefecto(campo: string, valorDefecto: string): string {
+        const textoLeido: string = readlineSync.question(`Si quiere modificar ${campo} ingrese nuevo valor, si desea conservar (${valorDefecto}) presione enter: `);
+        if ((textoLeido.trim().length == 0)) {
+            return valorDefecto;
+        } else {
+            return textoLeido;
         }
     }
 }

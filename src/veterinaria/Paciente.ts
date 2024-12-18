@@ -17,6 +17,21 @@ export class Paciente implements Identificable{
     getId(): number {
         return this.id;
     }
-
+    getNombre(): string {
+        return this.nombre;
+    }
+    getEspecie(): string {
+        return this.especie;
+    }
+    getDuenio(): Persona {
+        return this.duenio;
+    }
     
-}
+    setNombre(nombre:string) {
+        this.nombre=nombre;
+    }
+
+
+    }
+
+

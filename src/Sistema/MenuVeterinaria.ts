@@ -3,6 +3,17 @@ import { Veterinaria } from "../veterinaria/Veterinaria";
 import { TextUtils } from '../Utils/TextUtils';
 import { RedVeterinarias } from '../veterinaria/Veterinarias';
 import { CrearClienteRutina } from './rutinas/clientes/CrearClienteRutina';
+import { ListarClientesRutina } from './rutinas/clientes/ListarClientesRutina';
+import { ModificarClienteRutina } from './rutinas/clientes/ModificarClienteRutina';
+import { EliminarClienteRutina } from './rutinas/clientes/EliminarClienteRutina';
+import { ListarProveedorRutina } from './rutinas/proveedores/ListarProveedoresRutina';
+import { CrearProveedorRutina } from './rutinas/proveedores/CrearProveedorRutina';
+import { ModificarProveedorRutina } from './rutinas/proveedores/ModificarProveedorRutina';
+import { EliminarProveedorRutina } from './rutinas/proveedores/EliminarProveedorRutina';
+import { CrearPacienteRutina } from './rutinas/pacientes/CrearPaciente';
+import { ListarPacienteRutina } from './rutinas/pacientes/ListarPacientesRutina';
+import { ModificarPacienteRutina } from './rutinas/pacientes/ModificarPacienteRutina';
+import { EliminarPacienteRutina } from './rutinas/pacientes/EliminarPacienteRutina';
 
 export class MenuVeterinaria {
    
@@ -41,40 +52,40 @@ export class MenuVeterinaria {
         }
         switch (opcion) {
             case 1:
-                console.log("Listar Clientes");
+                new ListarClientesRutina(this.vet, this.red).ejecutarRutina();
                 break;
             case 2:
                 new CrearClienteRutina(this.vet, this.red).ejecutarRutina();
                 break;
             case 3:
-                console.log("Modificar Cliente");
+                new ModificarClienteRutina(this.vet, this.red).ejecutarRutina();
                 break;
             case 4:
-                console.log("Eliminar Clientes");
+                new EliminarClienteRutina(this.vet, this.red).ejecutarRutina();
                 break;
             case 5:
-                console.log("Listar Pacientes");
+                new ListarPacienteRutina(this.vet, this.red).ejecutarRutina();                
                 break;
             case 6:
-                console.log("Crear Paciente");
+                new CrearPacienteRutina(this.vet, this.red).ejecutarRutina();
                 break;
             case 7:
-                console.log("Modificar Paciente");
+                new ModificarPacienteRutina(this.vet, this.red).ejecutarRutina();
                 break;
             case 8:
-                console.log("Eliminar Paciente");
+                new EliminarPacienteRutina(this.vet, this.red).ejecutarRutina();
                 break;
             case 9:
-                console.log("Listar Proveedores");
+                new ListarProveedorRutina(this.vet, this.red).ejecutarRutina();
                 break;
             case 10:
-                console.log("Crear Proveedor");
+                new CrearProveedorRutina(this.vet, this.red).ejecutarRutina();
                 break;
             case 11:
-                console.log("Eliminar Proveedor");
+                new EliminarProveedorRutina(this.vet, this.red).ejecutarRutina();               
                 break;
             case 12:
-                console.log("Modificar Proveedor");
+                new ModificarProveedorRutina(this.vet, this.red).ejecutarRutina();
             default:
                 console.log("Opción inválida.");
                 TextUtils.esperarTecla();

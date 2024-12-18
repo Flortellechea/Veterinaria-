@@ -24,7 +24,7 @@ export class MenuPricipal {
         const opcionMenu = readlineSync.questionInt("Ingrese opcion: ");
         const opcionNumerica = Number(opcionMenu);
         console.log(opcionNumerica);
-        if (!(opcionNumerica >= 1 && opcionNumerica <= 6)) {
+        if (!(opcionNumerica >= 0 && opcionNumerica <= 6)) {
             console.log("Error opcion incorrecta");
             readlineSync.question("Enter para continuar");
             return true;

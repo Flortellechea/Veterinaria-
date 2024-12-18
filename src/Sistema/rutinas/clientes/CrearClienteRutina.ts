@@ -23,7 +23,24 @@ export class CrearClienteRutina implements RutinaEjecutable {
         const dni: number = TextUtils.pedirNumeroObligatorio("Ingrese DNI de Cliente: ");
         const existente = this.red.getClientes().find((cli) => cli.dni == dni);
         if (existente) {
-            console.log(`El cliente ya se encuentra registrado como: ${existente.getNombre()}`)
+
+            const existeVet = this.vet.getClientesVeterinaria().find((idC) => idC == existente.getId());
+            if (existeVet) {
+            TextUtils.mensajeConEnter(`El Cliente ya se encuentra registrado como: ${existente.getNombre()}`);
+            return false;
+            } else {
+                console.log(`El Cliente ya se encuentra registrado en la red como: ${existente.getNombre()}`);
+                const opcion = readlineSync.question("Presione S si s para agregarlo a la Veterinaria, N si quiere reintentar, C cancelar:");
+                if (opcion.toLowerCase() == 'S') {
+                    this.vet.getClientesVeterinaria().push(existente.getId());
+                    this.red.guardar();
+                    return true;
+                }
+                if (opcion.toLowerCase() == 'n') {
+                    return this.ejecutarRutina();
+                }
+                return false;
+            }
         }
         const nombre = TextUtils.pedirTextoObligatorio("Ingrese nombre de Cliente: ");
         readlineSync.question("Ingrese nombre de Cliente: ");

@@ -1,11 +1,13 @@
 import { Identificable } from "../Utils/IdUtils";
 
 export class Veterinaria implements Identificable {
+    
     id: number;
     nombre: string;
     direccion: string;
     clientesVeterinaria: number[];
     pacientesVeterinaria: number[];
+    proveedoresVeterinaria: number[];
 
     constructor(id: number, nombre: string, direccion: string) {
         this.id = id;
@@ -13,6 +15,7 @@ export class Veterinaria implements Identificable {
         this.direccion = direccion;
         this.clientesVeterinaria = [];
         this.pacientesVeterinaria = [];
+        this.proveedoresVeterinaria = [];
     }
 
     public getId(): number {
@@ -44,13 +47,20 @@ export class Veterinaria implements Identificable {
     public getPacientesVeterinaria(): number[] {
         return this.pacientesVeterinaria;
     }
-
-    public setClientesVeterinaria(clientesVeterinaria) {
+    public setClientesVeterinaria(clientesVeterinaria: number[]) {
         this.clientesVeterinaria = clientesVeterinaria;
     }
 
-    public setPacientesVeterinaria(pacientesVeterinaria) {
+    public setPacientesVeterinaria(pacientesVeterinaria: number[]) {
         this.pacientesVeterinaria = pacientesVeterinaria;
     }
-}
+    public getProveedoresVeterinaria(): number[] {
+        return this.proveedoresVeterinaria;
+    }
+
+    public setProveedoresVeterinaria(proveedoresVeterinaria: number[]) {
+        this.proveedoresVeterinaria = proveedoresVeterinaria;
+    }
+
+    }
 
