@@ -62,6 +62,9 @@ export class RedVeterinarias {
                 if (vet.pacientesVeterinaria) {
                     nuevaVet.setPacientesVeterinaria(vet.pacientesVeterinaria);
                 }
+                if (vet.proveedoresVeterinaria) {
+                    nuevaVet.setProveedoresVeterinaria(vet.proveedoresVeterinaria);
+                }
                 this.verterinarias.push(nuevaVet);
             }
             for (let index = 0; index < datosVeterinaria.clientes.length; index++) {
